@@ -20,7 +20,7 @@ export default function Capa() {
         <Text tag="h2" variant="subtitle" fontSize="30px" margin="5px">
           Full-Stack developer
         </Text>
-        <span style={{ fontSize: 25 }}>
+        <span style={{ fontSize: 25, color: '#B7DB14' }}>
           <Typewriter
             options={{
               strings: [
