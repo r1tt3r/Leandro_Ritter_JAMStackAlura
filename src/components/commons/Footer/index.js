@@ -16,6 +16,7 @@ const FooterWrapper = styled.footer`
     rgba(183, 219, 20, 1) 0%,
     rgba(98, 117, 11, 1) 58%
   );
+
   img {
     width: 58px;
     margin-right: 23px;

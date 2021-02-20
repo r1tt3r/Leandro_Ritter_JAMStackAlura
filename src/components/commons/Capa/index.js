@@ -8,6 +8,7 @@ export default function Capa() {
   return (
     <>
       <CapaWrapper>
+        <CapaWrapper.Avatar />
         <Text
           tag="h1"
           variant="title"

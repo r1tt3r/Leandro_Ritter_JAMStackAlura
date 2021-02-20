@@ -25,14 +25,13 @@ export default function Header() {
       <Grid.Container>
         <Grid.Row>
           <Grid.Col
-            // offset={{ xs: 0, md: 1 }}
             value={{ xs: 12, md: 4 }}
             display="flex"
             flexDirection="column"
-            alignItems="start"
+            alignItems={{ xs: 'center', md: 'start' }}
             justifyContent="center"
           >
-            <Text tag="h1" fontSize="25px" variant="title">
+            <Text tag="h1" fontSize="25px" margin="25px 0 0 0" variant="title">
               {'<LEANDRO.RITTER />'}
             </Text>
           </Grid.Col>

@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-import { TextStyleVariantsMap } from '../foundation/Text';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
@@ -16,36 +15,36 @@ export const HeaderWrapper = styled.header`
 `;
 
 HeaderWrapper.Links = styled.nav`
-  color: red;
+  width: 100%;
+  text-align: center;
   padding: 0;
   margin: 0;
   list-style: none;
   a {
     text-align: center;
+    cursor: pointer;
     display: block;
     text-decoration: none;
     color: #88989e;
     transition: 200ms ease-in-out;
-    ${breakpointsMedia({
-      xs: css`
-        ${TextStyleVariantsMap.smallestException}
-      `,
-      md: css`
-        ${TextStyleVariantsMap.paragraph1}
-      `,
-    })}
     &:hover,
     &:focus {
       font-weight: 500;
       color: #070c0e;
     }
   }
+  ${breakpointsMedia({
+    md: css`
+      width: initial;
+    `,
+  })}
 `;
 
 HeaderWrapper.Ul = styled.ul`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  padding-inline-start: 0;
 `;
 
 HeaderWrapper.Li = styled.li`
