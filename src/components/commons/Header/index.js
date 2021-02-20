@@ -1,26 +1,27 @@
-import React from "react";
-import { Grid } from "../foundation/layout/Grid";
-import Text from "../foundation/Text";
-import { HeaderWrapper } from "./styles";
+import React from 'react';
+import { Link } from 'react-scroll';
+import { Grid } from '../foundation/layout/Grid';
+import Text from '../foundation/Text';
+import { HeaderWrapper } from './styles';
 
 export default function Header() {
   const links = [
     {
-      display: "Sobre mim",
-      link: "/sobre",
+      display: 'Sobre mim',
+      link: 'sobre',
     },
     {
-      display: "Projetos",
-      link: "/projetos",
+      display: 'Projetos',
+      link: 'projetos',
     },
     {
-      display: "Contato",
-      link: "/contato",
+      display: 'Contato',
+      link: 'contato',
     },
   ];
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper id="header">
       <Grid.Container>
         <Grid.Row>
           <Grid.Col
@@ -32,7 +33,7 @@ export default function Header() {
             justifyContent="center"
           >
             <Text tag="h1" fontSize="25px" variant="title">
-              {"<LEANDRO.RITTER />"}
+              {'<LEANDRO.RITTER />'}
             </Text>
           </Grid.Col>
           <Grid.Col
@@ -46,13 +47,16 @@ export default function Header() {
               <HeaderWrapper.Ul>
                 {links.map((result) => (
                   <HeaderWrapper.Li key={result.link}>
-                    <Text
+                    <Link
+                      spy
+                      smooth
+                      duration={500}
                       variant="smallestException"
                       tag="a"
-                      href={result.link}
+                      to={result.link}
                     >
                       {result.display}
-                    </Text>
+                    </Link>
                   </HeaderWrapper.Li>
                 ))}
               </HeaderWrapper.Ul>

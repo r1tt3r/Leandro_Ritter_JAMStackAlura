@@ -1,12 +1,11 @@
-import { isStyledComponent } from "styled-components";
-import styled, { css } from "styled-components";
-import { breakpointsMedia } from "../../../theme/utils/breakpointsMedia";
-import { TextStyleVariantsMap } from "../foundation/Text";
+import styled, { css } from 'styled-components';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import { TextStyleVariantsMap } from '../foundation/Text';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
   height: 80px;
-  padding: 10px 40px;
+  /* padding: 10px; */
   display: flex;
   -webkit-box-align: center;
   align-items: center;
