@@ -8,28 +8,28 @@ export default function Projetos() {
   const projectList = [
     {
       id: 1,
-      image: 'images/instalura.png',
+      image: '/images/instalura.png',
       title: 'Instalura',
       text:
         'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
     },
     {
       id: 2,
-      image: 'images/instalura.png',
+      image: '/images/instalura.png',
       title: 'Instalura',
       text:
         'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
     },
     {
       id: 3,
-      image: 'images/instalura.png',
+      image: '/images/instalura.png',
       title: 'Instalura',
       text:
         'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
     },
     {
       id: 4,
-      image: 'images/instalura.png',
+      image: '/images/instalura.png',
       title: 'Instalura',
       text:
         'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',

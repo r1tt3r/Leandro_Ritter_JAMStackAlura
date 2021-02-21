@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 import { CardItem } from './style';
 import { Box } from '../foundation/layout/Box';
 import Text from '../foundation/Text';
@@ -17,7 +18,12 @@ export default function Card({ projects }) {
           return (
             <CardItem key={project.id}>
               <CardItem.Image>
-                <img alt="Imagem do projeto" src={project.image} />
+                <Image
+                  alt={project.title}
+                  src={project.image}
+                  width="348px"
+                  height="245px"
+                />
               </CardItem.Image>
               <CardItem.Content>
                 <Text variant="title" tag="h3">
