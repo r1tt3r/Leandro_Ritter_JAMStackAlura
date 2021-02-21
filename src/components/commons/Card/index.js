@@ -1,35 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CardItem } from './style';
 import { Box } from '../foundation/layout/Box';
 import Text from '../foundation/Text';
 
-export default function Card() {
-  const projects = [
-    {
-      image: 'images/instalura.png',
-      title: 'Instalura',
-      text:
-        'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
-    },
-    {
-      image: 'images/instalura.png',
-      title: 'Instalura',
-      text:
-        'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
-    },
-    {
-      image: 'images/instalura.png',
-      title: 'Instalura',
-      text:
-        'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
-    },
-    {
-      image: 'images/instalura.png',
-      title: 'Instalura',
-      text:
-        'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
-    },
-  ];
+export default function Card({ projects }) {
   return (
     <>
       <Box
@@ -40,7 +15,7 @@ export default function Card() {
       >
         {projects.map((project) => {
           return (
-            <CardItem>
+            <CardItem key={project.id}>
               <CardItem.Image>
                 <img alt="Imagem do projeto" src={project.image} />
               </CardItem.Image>
@@ -59,3 +34,10 @@ export default function Card() {
     </>
   );
 }
+Card.defaultProps = {
+  projects: [],
+};
+
+Card.propTypes = {
+  projects: PropTypes.array,
+};

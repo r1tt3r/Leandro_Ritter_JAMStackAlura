@@ -53,6 +53,6 @@ export default {
   typographyVariants,
   breakpoints,
   borderRadius: '8px',
-  fontFamily: "'Rubik', sans-serif",
+  fontFamily: "'Raleway', sans-serif",
   transition: '200ms ease-in-out',
 };
