@@ -11,11 +11,12 @@ export const CardItem = styled.article`
   color: #25262a;
   transition: all 0.3s ease;
   margin-bottom: 25px;
-  margin-right: 25px;
+  margin-right: 0;
   border-radius: 0 0 5px 5px;
   ${breakpointsMedia({
     md: css`
       width: 30%;
+      margin-right: 25px;
     `,
   })}
 `;
