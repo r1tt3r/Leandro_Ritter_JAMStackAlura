@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Lottie } from '@crello/react-lottie';
 import { Button } from '../../commons/Button';
 import { Box } from '../../commons/foundation/layout/Box';
@@ -87,11 +88,8 @@ export default function FormContato({ modalProps }) {
       body: JSON.stringify(contactDTO),
     })
       .then((resp) => {
-        console.log(resp);
         if (resp.ok) {
           return resp.json();
-        } else {
-          setSubmissionStatus(formState.ERROR);
         }
         throw new Error('Nao foi possivel enviar a mensagem');
       })
@@ -99,7 +97,7 @@ export default function FormContato({ modalProps }) {
       .catch(() => setSubmissionStatus(formState.ERROR));
   }
 
-  const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/; //REGEX EMAIL
+  const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const isFormInvalid =
     contactFromData.nome.length === 0 ||
     contactFromData.email.length === 0 ||
@@ -178,3 +176,17 @@ export default function FormContato({ modalProps }) {
     </Box>
   );
 }
+
+NotifyUser.propTypes = {
+  submissionStatus: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+FormContato.propTypes = {
+  modalProps: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.elementType,
+    PropTypes.object,
+  ]).isRequired,
+};
