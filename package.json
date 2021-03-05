@@ -8,6 +8,9 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@crello/react-lottie": "^0.0.11",
+    "framer-motion": "^3.10.0",
+    "lodash": "^4.17.21",
     "next": "latest",
     "prop-types": "^15.7.2",
     "react": "^16.8.0",
