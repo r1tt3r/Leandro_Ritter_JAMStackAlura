@@ -40,15 +40,13 @@ export default function Footer(props) {
         href="https://github.com/r1tt3r"
         target="_blank"
         rel="noreferrer"
-        style={{ marginRight: '10px' }}
-      >
+        style={{ marginRight: '10px' }}>
         <FaGithub size="30px" />
       </a>
       <a
         href="https://www.linkedin.com/in/leandroritter/"
         target="_blank"
-        rel="noreferrer"
-      >
+        rel="noreferrer">
         <FaLinkedin size="30px" />
       </a>
     </FooterWrapper>

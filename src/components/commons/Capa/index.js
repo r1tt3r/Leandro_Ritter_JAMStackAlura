@@ -13,8 +13,7 @@ export default function Capa() {
           tag="h1"
           variant="title"
           fontSize={{ md: '45px', xs: '30px' }}
-          margin="15px"
-        >
+          margin="15px">
           {'<LEANDRO.RITTER />'}
         </Text>
         <Text tag="h2" variant="subtitle" fontSize="30px" margin="5px">

@@ -2,6 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
+import PropTypes from 'prop-types';
 import theme from '../src/theme';
 import GlobalStyle from '../src/theme/GlobalStyles';
 
@@ -23,3 +24,17 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+App.propTypes = {
+  Component: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.elementType,
+    PropTypes.object,
+  ]).isRequired,
+  pageProps: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.elementType,
+    PropTypes.object,
+  ]).isRequired,
+};

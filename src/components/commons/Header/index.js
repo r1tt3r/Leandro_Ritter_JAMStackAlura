@@ -29,8 +29,7 @@ export default function Header() {
             display="flex"
             flexDirection="column"
             alignItems={{ xs: 'center', md: 'start' }}
-            justifyContent="center"
-          >
+            justifyContent="center">
             <Text tag="h1" fontSize="25px" margin="25px 0 0 0" variant="title">
               {'<LEANDRO.RITTER />'}
             </Text>
@@ -40,8 +39,7 @@ export default function Header() {
             display="flex"
             flexDirection="column"
             alignItems="flex-end"
-            justifyContent="center"
-          >
+            justifyContent="center">
             <HeaderWrapper.Links>
               <HeaderWrapper.Ul>
                 {links.map((result) => (
@@ -52,8 +50,7 @@ export default function Header() {
                       duration={500}
                       variant="smallestException"
                       tag="a"
-                      to={result.link}
-                    >
+                      to={result.link}>
                       {result.display}
                     </Link>
                   </HeaderWrapper.Li>

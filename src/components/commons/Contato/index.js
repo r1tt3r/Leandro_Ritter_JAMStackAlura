@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FormContato from '../../patterns/FormContato';
 import { ContactButton } from './styles';
 import { Box } from '../foundation/layout/Box';
 import { Grid } from '../foundation/layout/Grid';
 import { Wrapper } from '../foundation/layout/Wrapper';
-import Text from '../foundation/Text';
 import Modal from '../Modal';
 
 export default function Contato() {
