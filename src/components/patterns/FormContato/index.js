@@ -16,6 +16,38 @@ const formState = {
   ERROR: 'ERROR',
 };
 
+function NotifyUser({ submissionStatus, children }) {
+  const animationConfig = {
+    loop: true,
+    autoplay: true,
+  };
+  if (submissionStatus === formState.LOADING) {
+    animationConfig.animationData = loadingAnimation;
+  }
+  if (submissionStatus === formState.DONE) {
+    animationConfig.animationData = successAnimation;
+  }
+  if (submissionStatus === formState.ERROR) {
+    animationConfig.animationData = errorAnimation;
+  }
+  return (
+    <Box
+      position="absolute"
+      background="white"
+      height="100%"
+      width="90%"
+      padding="50px 0 0 0"
+      display="flex"
+      alignItems="center"
+      flexDirection="column">
+      <Lottie width="150px" height="150px" config={animationConfig} />
+      <Text textAlign="center" tag="div" display="block">
+        {children}
+      </Text>
+    </Box>
+  );
+}
+
 export default function FormContato({ modalProps }) {
   const [contactFromData, setContactFormData] = React.useState({
     nome: '',
@@ -74,38 +106,6 @@ export default function FormContato({ modalProps }) {
     contactFromData.msg.length === 0 ||
     !reg.test(contactFromData.email);
 
-  function NotifyUser({ children }) {
-    const animationConfig = {
-      loop: true,
-      autoplay: true,
-    };
-    if (submissionStatus === formState.LOADING) {
-      animationConfig.animationData = loadingAnimation;
-    }
-    if (submissionStatus === formState.DONE) {
-      animationConfig.animationData = successAnimation;
-    }
-    if (submissionStatus === formState.ERROR) {
-      animationConfig.animationData = errorAnimation;
-    }
-    return (
-      <Box
-        position="absolute"
-        background="white"
-        height="100%"
-        width="90%"
-        padding="50px 0 0 0"
-        display="flex"
-        alignItems="center"
-        flexDirection="column">
-        <Lottie width="150px" height="150px" config={animationConfig} />
-        <Text textAlign="center" tag="div" display="block">
-          {children}
-        </Text>
-      </Box>
-    );
-  }
-
   return (
     <Box
       alignSelf="flex-end"
@@ -117,24 +117,24 @@ export default function FormContato({ modalProps }) {
       <Box textAlign="right">{modalProps.ButtonCloseModal}</Box>
 
       {isFormSubmited && submissionStatus === formState.LOADING && (
-        <NotifyUser>
+        <NotifyUser submissionStatus={submissionStatus}>
           Seus dados estão sendo enviados, por favor aguarde :)
         </NotifyUser>
       )}
 
       {isFormSubmited && submissionStatus === formState.DONE && (
-        <NotifyUser>
+        <NotifyUser submissionStatus={submissionStatus}>
           Obrigado por entrar em contato, em breve retorno seu contato.
         </NotifyUser>
       )}
 
       {isFormSubmited && submissionStatus === formState.ERROR && (
-        <NotifyUser>
+        <NotifyUser submissionStatus={submissionStatus}>
           Houve um erro ao enviar seus dados, por favor tente novamente.
         </NotifyUser>
       )}
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <Box>
           <Text variant="subTitle" tag="h2">
             ENVIE SUA MENSAGEM
@@ -170,7 +170,6 @@ export default function FormContato({ modalProps }) {
             variant="primary.main"
             width="100%"
             display="block"
-            onClick={handleSubmit}
             disabled={isFormInvalid}>
             Enviar
           </Button>

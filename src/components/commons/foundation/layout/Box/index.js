@@ -8,6 +8,7 @@ export const Box = styled.div`
   ${propToStyle('alignItems')}
   ${propToStyle('flex')}
   ${propToStyle('padding')}
+  ${propToStyle('margin')}
   ${propToStyle('flexWrap')}
   ${propToStyle('alignSelf')}
   ${propToStyle('background')}
