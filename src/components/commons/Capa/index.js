@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Typewriter from 'typewriter-effect';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Text from '../foundation/Text';
@@ -43,7 +44,7 @@ export default function Capa({ colorWrapper }) {
           variant="title"
           fontSize={{ md: '45px', xs: '30px' }}
           margin="15px">
-          {'Leandro Ritter'}
+          Leandro Ritter
         </Text>
         <Text tag="h2" variant="subtitle" fontSize="30px" margin="5px">
           Desenvolvedor Frontend
@@ -70,3 +71,7 @@ export default function Capa({ colorWrapper }) {
     </>
   );
 }
+
+Capa.propTypes = {
+  colorWrapper: PropTypes.string.isRequired,
+};

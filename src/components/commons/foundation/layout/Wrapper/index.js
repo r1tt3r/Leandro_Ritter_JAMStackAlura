@@ -59,10 +59,12 @@ export function Wrapper({
 
 Wrapper.defaultProps = {
   fullHeight: 'nao',
+  noFooter: false,
 };
 
 Wrapper.propTypes = {
   children: PropTypes.node.isRequired,
   colorWrapper: PropTypes.string.isRequired,
   fullHeight: PropTypes.string,
+  noFooter: PropTypes.bool,
 };

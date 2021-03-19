@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from '../foundation/layout/Grid';
 import Text from '../foundation/Text';
 import Card from '../Card';
@@ -26,3 +27,7 @@ export default function Projetos({ colorWrapper }) {
     </Wrapper>
   );
 }
+
+Projetos.propTypes = {
+  colorWrapper: PropTypes.string.isRequired,
+};
