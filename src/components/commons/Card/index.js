@@ -30,6 +30,7 @@ export default function Card({ projects }) {
             <CardItem.Content
               onClick={() => {
                 websitePageContext.setCurrentCardData('setado na home no card');
+                // eslint-disable-next-line no-console
                 console.log(websitePageContext.getCurrentCardData());
               }}>
               <Text variant="title" tag="h3">

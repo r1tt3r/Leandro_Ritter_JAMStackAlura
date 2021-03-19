@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-cycle
 import Footer from '../../commons/Footer';
 import Modal from '../../commons/Modal';
 // import { SEO } from '../../commons/SEO';

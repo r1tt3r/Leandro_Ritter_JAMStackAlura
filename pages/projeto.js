@@ -10,6 +10,7 @@ function ProjectScreen() {
   const websitePageContext = React.useContext(WebsitePageContext);
 
   React.useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log(websitePageContext.getCurrentCardData());
   }, []);
 
