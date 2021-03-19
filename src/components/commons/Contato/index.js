@@ -9,7 +9,7 @@ import Modal from '../Modal';
 export default function Contato() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   return (
-    <Wrapper id="contato">
+    <Wrapper id="contato" minHeight="initial" noFooter>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {(modalProps) => <FormContato modalProps={modalProps} />}
       </Modal>

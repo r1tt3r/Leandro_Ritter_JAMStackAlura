@@ -1,20 +1,28 @@
 import React from 'react';
-import Footer from '../src/components/commons/Footer';
-import Header from '../src/components/commons/Header';
 import Capa from '../src/components/commons/Capa';
 import Projetos from '../src/components/commons/Projetos';
 import Sobre from '../src/components/commons/Sobre';
-import Contato from '../src/components/commons/Contato';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
-export default function Home() {
+function HomeScreen() {
   return (
     <>
-      <Capa />
-      <Header />
-      <Sobre />
-      <Projetos />
-      <Contato />
-      <Footer />
+      <Capa colorWrapper="black" />
+      <Sobre colorWrapper="white" />
+      <Projetos colorWrapper="black" />
     </>
   );
 }
+
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    // seoProps: {
+    //   headTitle: 'Home',
+    // },
+    pageBoxProps: {
+      justifyContent: 'space-between',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+    },
+  },
+});

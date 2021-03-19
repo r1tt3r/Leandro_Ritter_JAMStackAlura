@@ -12,6 +12,9 @@ export const HeaderWrapper = styled.header`
   top: 0px;
   left: 0px;
   border-bottom: 1px solid #3d3d3d;
+  z-index: 1;
+  background: #242424;
+  /* position: fixed; */
 `;
 
 HeaderWrapper.Links = styled.nav`
@@ -30,7 +33,7 @@ HeaderWrapper.Links = styled.nav`
     &:hover,
     &:focus {
       font-weight: 500;
-      color: #070c0e;
+      color: #fff;
     }
   }
   ${breakpointsMedia({

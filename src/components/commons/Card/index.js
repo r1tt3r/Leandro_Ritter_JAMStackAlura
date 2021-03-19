@@ -1,11 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
+import Link from '../Link';
+import { WebsitePageContext } from '../../wrappers/WebsitePage';
 import { CardItem } from './style';
 import { Box } from '../foundation/layout/Box';
 import Text from '../foundation/Text';
 
 export default function Card({ projects }) {
+  const websitePageContext = React.useContext(WebsitePageContext);
+
   return (
     <>
       <Box
@@ -23,9 +27,13 @@ export default function Card({ projects }) {
                 height="245px"
               />
             </CardItem.Image>
-            <CardItem.Content>
+            <CardItem.Content
+              onClick={() => {
+                websitePageContext.setCurrentCardData('setado na home no card');
+                console.log(websitePageContext.getCurrentCardData());
+              }}>
               <Text variant="title" tag="h3">
-                {project.title}
+                <Link href="/projeto">{project.title}</Link>
               </Text>
               <Text variant="paragraph1" tag="p" color="tertiary.light">
                 {project.text}
@@ -42,5 +50,5 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
-  projects: PropTypes.node,
+  projects: PropTypes.array,
 };

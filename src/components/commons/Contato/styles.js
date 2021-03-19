@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 
 export const ContactButton = styled.div`
-  /* border: 2px solid #62750a;
-  border-radius: 30px;
-  padding: 20px;
-  font-weight: 800;
-  font-size: 24px;
-  &:hover {
-    background: #b7db14;
-    color: #fff;
-  } */
   position: relative;
   display: inline-block;
   padding: 20px 30px;

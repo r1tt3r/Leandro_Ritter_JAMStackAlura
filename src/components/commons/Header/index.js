@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+import Link from '../Link';
 import { Grid } from '../foundation/layout/Grid';
 import Text from '../foundation/Text';
 import { HeaderWrapper } from './styles';
@@ -16,7 +17,7 @@ export default function Header() {
     },
     {
       display: 'Contato',
-      link: 'contato',
+      link: 'footer',
     },
   ];
 
@@ -30,8 +31,8 @@ export default function Header() {
             flexDirection="column"
             alignItems={{ xs: 'center', md: 'start' }}
             justifyContent="center">
-            <Text tag="h1" fontSize="25px" margin="25px 0 0 0" variant="title">
-              {'<LEANDRO.RITTER />'}
+            <Text tag="h1" fontSize="20px" variant="title">
+              <Link href="/">{'<LEANDRO.RITTER />'}</Link>
             </Text>
           </Grid.Col>
           <Grid.Col
@@ -44,7 +45,7 @@ export default function Header() {
               <HeaderWrapper.Ul>
                 {links.map((result) => (
                   <HeaderWrapper.Li key={result.link}>
-                    <Link
+                    <ScrollLink
                       spy
                       smooth
                       duration={500}
@@ -52,7 +53,7 @@ export default function Header() {
                       tag="a"
                       to={result.link}>
                       {result.display}
-                    </Link>
+                    </ScrollLink>
                   </HeaderWrapper.Li>
                 ))}
               </HeaderWrapper.Ul>

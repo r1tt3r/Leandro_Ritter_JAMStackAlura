@@ -134,7 +134,7 @@ export default function FormContato({ modalProps }) {
 
       <form onSubmit={handleSubmit}>
         <Box>
-          <Text variant="subTitle" tag="h2">
+          <Text variant="subTitle" color="#3d3d3d" tag="h2" textAlign="center">
             ENVIE SUA MENSAGEM
           </Text>
           <TextField

@@ -3,43 +3,21 @@ import { Grid } from '../foundation/layout/Grid';
 import Text from '../foundation/Text';
 import Card from '../Card';
 import { Wrapper } from '../foundation/layout/Wrapper';
+import db from '../../../../db.json';
 
-export default function Projetos() {
-  const projectList = [
-    {
-      id: 1,
-      image: '/images/instalura.png',
-      title: 'Instalura',
-      text:
-        'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
-    },
-    {
-      id: 2,
-      image: '/images/instalura.png',
-      title: 'Instalura',
-      text:
-        'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
-    },
-    {
-      id: 3,
-      image: '/images/instalura.png',
-      title: 'Instalura',
-      text:
-        'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
-    },
-    {
-      id: 4,
-      image: '/images/instalura.png',
-      title: 'Instalura',
-      text:
-        'Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.',
-    },
-  ];
+export default function Projetos({ colorWrapper }) {
+  const projectList = db.projects;
+
   return (
-    <Wrapper id="projetos">
+    <Wrapper id="projetos" colorWrapper={colorWrapper} minHeight="1160px">
       <Grid.Container>
-        <Grid.Row>
-          <Text tag="h2" variant="title" color="tertiary.main" fontSize="42px">
+        <Grid.Row textAlign="center">
+          <Text
+            tag="h2"
+            variant="title"
+            color="tertiary.main"
+            fontSize="42px"
+            width="100%">
             Projetos
           </Text>
           <Card projects={projectList} />

@@ -1,0 +1,37 @@
+  {
+    "projects": [
+      {
+      "id": 0,
+      "image": "/images/instalura.png",
+      "title": "Instalura 1",
+      "text":
+        "Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.",
+      "link": "https://www.google.com.br/"
+    },
+    {
+      "id": 1,
+      "image": "/images/instalura.png",
+      "title": "Instalura 2",
+      "text":
+        "Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.",
+      "link": "https://www.google.com.br/"
+    },
+    {
+      "id": 2,
+      "image": "/images/instalura.png",
+      "title": "Instalura 3",
+      "text":
+        "Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.",
+      "link": "https://www.google.com.br/"
+    },
+    {
+      "id": 3,
+      "image": "/images/instalura.png",
+      "title": "Instalura 4",
+      "text":
+        "Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs.",
+      "link": "https://www.google.com.br/"
+    }]
+}
+
+  
