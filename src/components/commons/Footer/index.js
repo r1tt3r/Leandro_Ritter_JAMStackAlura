@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Box } from '../foundation/layout/Box';
+// eslint-disable-next-line import/no-cycle
 import { WebsitePageContext } from '../../wrappers/WebsitePage';
 
 const ContactButton = styled.div`
