@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { Grid } from '../foundation/layout/Grid';
 import Text from '../foundation/Text';
 import { Wrapper } from '../foundation/layout/Wrapper';

@@ -50,5 +50,5 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
-  projects: PropTypes.array,
+  projects: PropTypes.objectOf(PropTypes.object),
 };
