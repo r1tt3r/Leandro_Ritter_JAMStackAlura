@@ -26,6 +26,7 @@ const TextBase = styled.span`
   ${({ variant }) => TextStyleVariantsMap[variant]}
   ${propToStyle('textAlign')}
   ${propToStyle('fontSize')}
+  ${propToStyle('fontWeight')}
   ${propToStyle('margin')}
   ${propToStyle('width')}
   ${propToStyle('color')}

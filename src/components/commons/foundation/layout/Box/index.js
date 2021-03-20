@@ -23,4 +23,5 @@ export const Box = styled.div`
   ${propToStyle('position')}
   ${propToStyle('textAlign')}
   ${propToStyle('minWidth')}
+  ${propToStyle('opacity')}
 `;

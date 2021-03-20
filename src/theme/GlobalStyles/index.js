@@ -14,6 +14,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.fontFamily};
     color:#fff;
   }
+  a {
+    color: #fff;
+  }
   /* Full height layout */
   html, body {
     display: flex;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { Link as ScrollLink } from 'react-scroll';
 import Link from '../Link';
 import { Grid } from '../foundation/layout/Grid';
@@ -6,18 +7,23 @@ import Text from '../foundation/Text';
 import { HeaderWrapper } from './styles';
 
 export default function Header() {
+  const router = useRouter();
+
   const links = [
     {
       display: 'Sobre mim',
-      link: 'sobre',
+      homeLink: 'sobre',
+      link: '/sobremim',
     },
     {
       display: 'Projetos',
-      link: 'projetos',
+      homeLink: 'projetos',
+      link: '/',
     },
     {
       display: 'Contato',
-      link: 'footer',
+      homeLink: 'footer',
+      link: '/',
     },
   ];
 
@@ -44,16 +50,20 @@ export default function Header() {
             <HeaderWrapper.Links>
               <HeaderWrapper.Ul>
                 {links.map((result) => (
-                  <HeaderWrapper.Li key={result.link}>
-                    <ScrollLink
-                      spy
-                      smooth
-                      duration={500}
-                      variant="smallestException"
-                      tag="a"
-                      to={result.link}>
-                      {result.display}
-                    </ScrollLink>
+                  <HeaderWrapper.Li key={result.homeLink}>
+                    {router.pathname === '/' ? (
+                      <ScrollLink
+                        spy
+                        smooth
+                        duration={500}
+                        variant="smallestException"
+                        tag="a"
+                        to={result.homeLink}>
+                        {result.display}
+                      </ScrollLink>
+                    ) : (
+                      <Link href={result.link}>{result.display}</Link>
+                    )}
                   </HeaderWrapper.Li>
                 ))}
               </HeaderWrapper.Ul>

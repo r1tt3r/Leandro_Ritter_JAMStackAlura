@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 export const SocialLinks = styled.div`
   width: auto;
@@ -6,6 +7,7 @@ export const SocialLinks = styled.div`
   left: 15px;
   bottom: 15px;
   z-index: 1;
+  display: none;
 
   &:before {
     content: '';
@@ -30,6 +32,11 @@ export const SocialLinks = styled.div`
     color: #fff;
     margin-bottom: 30px;
   }
+  ${breakpointsMedia({
+    md: {
+      display: css`initial`,
+    },
+  })}
 `;
 
 SocialLinks.Ul = styled.ul`
@@ -39,7 +46,7 @@ SocialLinks.Ul = styled.ul`
 
 export const CapaWrapper = styled.section`
   width: 100%;
-  height: 100vh;
+  height: '100vh';
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

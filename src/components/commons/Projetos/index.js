@@ -5,12 +5,13 @@ import Text from '../foundation/Text';
 import Card from '../Card';
 import { Wrapper } from '../foundation/layout/Wrapper';
 import db from '../../../../db.json';
+import Link from '../Link';
 
 export default function Projetos({ colorWrapper }) {
   const projectList = db.projects;
 
   return (
-    <Wrapper id="projetos" colorWrapper={colorWrapper} minHeight="1160px">
+    <Wrapper id="projetos" colorWrapper={colorWrapper}>
       <Grid.Container>
         <Grid.Row textAlign="center">
           <Text
@@ -21,7 +22,15 @@ export default function Projetos({ colorWrapper }) {
             width="100%">
             Projetos
           </Text>
-          <Card projects={projectList} />
+          <Grid.Row>
+            {projectList.map((project) => (
+              <React.Fragment key={project.slug}>
+                <Link href={`/project/${project.slug}`} display="contents">
+                  <Card project={project} />
+                </Link>
+              </React.Fragment>
+            ))}
+          </Grid.Row>
         </Grid.Row>
       </Grid.Container>
     </Wrapper>

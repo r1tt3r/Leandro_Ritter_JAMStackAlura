@@ -16,13 +16,8 @@ function HomeScreen() {
 
 export default websitePageHOC(HomeScreen, {
   pageWrapperProps: {
-    // seoProps: {
-    //   headTitle: 'Home',
-    // },
-    pageBoxProps: {
-      justifyContent: 'space-between',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'bottom right',
+    seoProps: {
+      headTitle: 'Home',
     },
   },
 });

@@ -29,6 +29,7 @@ const ProjectUrl = styled.li`
     color: #fff;
   }
 `;
+
 function SobreMimScreen({ gitHubData }) {
   return (
     <Wrapper
@@ -41,12 +42,15 @@ function SobreMimScreen({ gitHubData }) {
       flexDirection="column"
       fullHeight="nao">
       <h1>Sobre Mim</h1>
-      <NextImage
-        alt="Leandro Ritter"
-        src="/images/avatar2.jpg"
-        width="300px"
-        height="399px"
-      />
+      <Box opacity="0.5">
+        <NextImage
+          alt="Leandro Ritter"
+          src="/images/avatar2.jpg"
+          width="300px"
+          height="399px"
+        />
+      </Box>
+
       <Grid.Container marginTop="20px">
         <Grid.Row>
           <Grid.Col value={{ xs: 12, md: 12 }}>
@@ -107,15 +111,14 @@ function SobreMimScreen({ gitHubData }) {
 export default websitePageHOC(SobreMimScreen, {
   pageWrapperProps: {
     seoProps: {
-      headTitle: 'Home',
+      headTitle: 'Sobre mim',
     },
   },
 });
 
 export async function getStaticProps() {
-  const gdata = await fetch('https://api.github.com/users/r1tt3r/repos')
-    .then((r) => r.json())
-    .then((r) => r);
+  const res = await fetch('https://api.github.com/users/r1tt3r/repos');
+  const gdata = await res.json();
 
   return {
     props: {

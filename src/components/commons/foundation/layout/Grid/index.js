@@ -29,7 +29,8 @@ const Container = styled.div`
       max-width: 992px;
     `,
     xl: css`
-      max-width: 1222px;
+      /* max-width: 1222px; */
+      max-width: 1100px;
     `,
   })}
 
