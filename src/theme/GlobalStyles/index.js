@@ -1,5 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import normalize from 'styled-normalize';
+import { breakpointsMedia } from '../utils/breakpointsMedia';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -11,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: ${({ theme }) => theme.fontFamily};
+    color:#fff;
+  }
+  a {
+    color: #fff;
   }
   /* Full height layout */
   html, body {
@@ -22,6 +27,45 @@ const GlobalStyle = createGlobalStyle`
     flex: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
+  #__next:after, #__next:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: hsla(0,0%,40%,.3);
+    z-index: 9999;
+}
+#__next:before {
+  left: 4%;
+}
+#__next:after {
+  right: 4%;
+}
+
+${breakpointsMedia({
+  xs: css`
+    #__next:before {
+      left: 1%;
+    }
+    #__next:after {
+      right: 1%;
+    }
+  `,
+  sm: css``,
+  md: css``,
+  lg: css``,
+  xl: css`
+    #__next:before {
+      left: 4%;
+    }
+    #__next:after {
+      right: 4%;
+    }
+  `,
+})}
+
 `;
 export default GlobalStyle;

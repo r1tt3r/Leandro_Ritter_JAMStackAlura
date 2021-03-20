@@ -1,22 +1,29 @@
 import React from 'react';
-import { Link } from 'react-scroll';
+import { useRouter } from 'next/router';
+import { Link as ScrollLink } from 'react-scroll';
+import Link from '../Link';
 import { Grid } from '../foundation/layout/Grid';
 import Text from '../foundation/Text';
 import { HeaderWrapper } from './styles';
 
 export default function Header() {
+  const router = useRouter();
+
   const links = [
     {
       display: 'Sobre mim',
-      link: 'sobre',
+      homeLink: 'sobre',
+      link: '/sobremim',
     },
     {
       display: 'Projetos',
-      link: 'projetos',
+      homeLink: 'projetos',
+      link: '/',
     },
     {
       display: 'Contato',
-      link: 'contato',
+      homeLink: 'footer',
+      link: '/',
     },
   ];
 
@@ -30,8 +37,8 @@ export default function Header() {
             flexDirection="column"
             alignItems={{ xs: 'center', md: 'start' }}
             justifyContent="center">
-            <Text tag="h1" fontSize="25px" margin="25px 0 0 0" variant="title">
-              {'<LEANDRO.RITTER />'}
+            <Text tag="h1" fontSize="20px" variant="title">
+              <Link href="/">{'<LEANDRO.RITTER />'}</Link>
             </Text>
           </Grid.Col>
           <Grid.Col
@@ -43,16 +50,20 @@ export default function Header() {
             <HeaderWrapper.Links>
               <HeaderWrapper.Ul>
                 {links.map((result) => (
-                  <HeaderWrapper.Li key={result.link}>
-                    <Link
-                      spy
-                      smooth
-                      duration={500}
-                      variant="smallestException"
-                      tag="a"
-                      to={result.link}>
-                      {result.display}
-                    </Link>
+                  <HeaderWrapper.Li key={result.homeLink}>
+                    {router.pathname === '/' ? (
+                      <ScrollLink
+                        spy
+                        smooth
+                        duration={500}
+                        variant="smallestException"
+                        tag="a"
+                        to={result.homeLink}>
+                        {result.display}
+                      </ScrollLink>
+                    ) : (
+                      <Link href={result.link}>{result.display}</Link>
+                    )}
                   </HeaderWrapper.Li>
                 ))}
               </HeaderWrapper.Ul>

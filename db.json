@@ -1,0 +1,41 @@
+  {
+    "projects": [
+      {
+      "id": 0,
+      "image": "/images/instalura.png",
+      "slug": "instalura-1",
+      "title": "Instalura 1",
+      "text":
+        "Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs. Ad eu enim id excepteur. Magna Lorem dolore culpa qui amet non enim Lorem ut sit enim. Elit id do dolore commodo dolore.",
+      "link": "https://www.google.com.br/"
+    },
+    {
+      "id": 1,
+      "image": "/images/instalura.png",
+      "slug": "instalura-2",
+      "title": "Instalura 2",
+      "text":
+        "Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs. Laboris deserunt pariatur quis non sit nostrud in ex. Ullamco occaecat non dolor ad deserunt commodo esse duis exercitation pariatur. Exercitation consequat aliquip amet labore pariatur eiusmod esse mollit voluptate Lorem nostrud commodo sint. Veniam voluptate sit exercitation excepteur laborum laboris culpa magna occaecat exercitation dolor. Tempor sunt qui cillum commodo amet est pariatur.",
+      "link": "https://www.google.com.br/"
+    },
+    {
+      "id": 2,
+      "image": "/images/instalura.png",
+      "slug": "instalura-3",
+      "title": "Instalura 3",
+      "text":
+        "Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs. Occaecat commodo sit laborum Lorem cillum in dolor. Tempor dolore sint sit veniam duis dolore sunt magna exercitation id cillum cupidatat duis dolore. Dolor fugiat sit deserunt nulla non sint do. Consectetur officia sunt aute esse do et est anim est culpa.",
+      "link": "https://www.google.com.br/"
+    },
+    {
+      "id": 3,
+      "image": "/images/instalura.png",
+      "slug": "instalura-4",
+      "title": "Instalura 4",
+      "text":
+        "Projeto criado durante o bootcamp JAMStack da Alura. Desenvolvido com Javascript, React e NextJs. Labore cillum laboris ea ullamco labore. Et laboris in nulla culpa consectetur aliqua mollit pariatur quis enim ea aliqua. Et anim nulla officia aliqua nostrud cupidatat duis deserunt anim ipsum. Magna proident consectetur duis duis reprehenderit ut laboris nulla ipsum nulla enim sint. Occaecat deserunt veniam dolore et excepteur. Excepteur ex ea sit laboris excepteur Lorem anim reprehenderit proident nulla.",
+      "link": "https://www.google.com.br/"
+    }]
+}
+
+  

@@ -22,4 +22,6 @@ export const Box = styled.div`
   ${propToStyle('borderRadius')}
   ${propToStyle('position')}
   ${propToStyle('textAlign')}
+  ${propToStyle('minWidth')}
+  ${propToStyle('opacity')}
 `;

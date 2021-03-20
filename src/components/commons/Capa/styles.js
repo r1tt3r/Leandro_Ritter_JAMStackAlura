@@ -1,18 +1,61 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+
+export const SocialLinks = styled.div`
+  width: auto;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  z-index: 1;
+  display: none;
+
+  &:before {
+    content: '';
+    width: 1px;
+    height: 50px;
+    background: hsla(0, 0%, 49%, 0.4);
+    position: absolute;
+    left: 13px;
+    top: -50px;
+  }
+  &:after {
+    color: #888;
+    content: 'SOCIAL';
+    position: absolute;
+    left: -29px;
+    top: -115px;
+    letter-spacing: 5px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  a {
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  ${breakpointsMedia({
+    md: {
+      display: css`initial`,
+    },
+  })}
+`;
+
+SocialLinks.Ul = styled.ul`
+  list-style: none;
+  padding-inline-start: 0;
+`;
 
 export const CapaWrapper = styled.section`
   width: 100%;
-  height: 100vh;
+  height: '100vh';
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
   justify-content: center;
-  /* background: ${({ theme }) => theme.colors.primary.main.color}; */
   color: #fff;
-  background-color: #3d3d3d;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='46' height='46' fill-opacity='0.6' fill='%234f4f4f'/%3E%3C/svg%3E");
+  background-color: #202020;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='46' height='46' fill-opacity='0.6' fill='%234f4f4f'/%3E%3C/svg%3E"); */
 `;
 CapaWrapper.Avatar = styled.div`
   width: 200px;

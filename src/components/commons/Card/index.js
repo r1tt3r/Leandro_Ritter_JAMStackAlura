@@ -1,46 +1,37 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 import { CardItem } from './style';
-import { Box } from '../foundation/layout/Box';
 import Text from '../foundation/Text';
+import { Grid } from '../foundation/layout/Grid';
 
-export default function Card({ projects }) {
+export default function Card({ project }) {
   return (
     <>
-      <Box
-        display="flex"
-        flexWrap="wrap"
-        alignItems="stretch"
-        justifyContent="flex-start">
-        {projects.map((project) => (
-          <CardItem key={project.id}>
-            <CardItem.Image>
-              <Image
-                alt={project.title}
-                src={project.image}
-                width="348px"
-                height="245px"
-              />
-            </CardItem.Image>
-            <CardItem.Content>
-              <Text variant="title" tag="h3">
-                {project.title}
-              </Text>
-              <Text variant="paragraph1" tag="p" color="tertiary.light">
-                {project.text}
-              </Text>
-            </CardItem.Content>
-          </CardItem>
-        ))}
-      </Box>
+      <Grid.Col value={{ md: 4, xs: 12 }}>
+        <CardItem>
+          <CardItem.Image>
+            <Image
+              alt={project.title}
+              src={project.image}
+              width="348px"
+              height="245px"
+            />
+          </CardItem.Image>
+          <CardItem.Content>
+            <Text variant="title" tag="h3">
+              {project.title}
+            </Text>
+            <CardItem.Description>{project.text}</CardItem.Description>
+          </CardItem.Content>
+        </CardItem>
+      </Grid.Col>
     </>
   );
 }
-Card.defaultProps = {
-  projects: [],
-};
 
 Card.propTypes = {
-  projects: PropTypes.node,
+  project: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  ).isRequired,
 };
