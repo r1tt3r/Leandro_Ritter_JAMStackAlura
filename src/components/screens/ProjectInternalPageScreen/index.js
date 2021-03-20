@@ -15,11 +15,11 @@ export default function ProjectInternalPageScreen({
   return (
     <Wrapper
       colorWrapper="black"
-      minHeight="500px"
+      //   minHeight="700px"
       display="flex"
       alignItems="center"
       flexDirection="column"
-      height="75vh">
+      height="80vh">
       <Grid.Container>
         <Grid.Row>
           <Text tag="h1" fontSize="42px" textAlign="center" width="100%">

@@ -12,7 +12,7 @@ export default function Capa({ colorWrapper }) {
       <Wrapper
         colorWrapper={colorWrapper}
         id="capa"
-        fullHeight="sim"
+        height="90vh"
         textAlign="center"
         display="flex"
         alignItems="center"
