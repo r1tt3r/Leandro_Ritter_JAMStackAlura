@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as yup from 'yup';
 import { Lottie } from '@crello/react-lottie';
 import { Button } from '../../commons/Button';
 import { Box } from '../../commons/foundation/layout/Box';
@@ -9,6 +10,20 @@ import TextField from '../../forms/TextField';
 import loadingAnimation from './animations/loading.json';
 import successAnimation from './animations/success.json';
 import errorAnimation from './animations/error.json';
+import { useForm } from '../../../infra/hooks/forms/useForm';
+import { contactService } from '../../../services/contact';
+
+const contactSchema = yup.object().shape({
+  name: yup
+    .string()
+    .required('"Nome" é obrigatório')
+    .min(3, 'Preencha ao menos 3 caracteres'),
+  email: yup
+    .string()
+    .email('Preencha o campo com um email válido')
+    .required('"Email" é obrigatório'),
+  message: yup.string().required().min('3', 'Preencha ao menos 3 caracteres'),
+});
 
 const formState = {
   DEFAULT: 'DEFAULT',
@@ -42,7 +57,12 @@ function NotifyUser({ submissionStatus, children }) {
       alignItems="center"
       flexDirection="column">
       <Lottie width="150px" height="150px" config={animationConfig} />
-      <Text textAlign="center" tag="div" display="block">
+      <Text
+        textAlign="center"
+        tag="p"
+        display="block"
+        color="#000"
+        id="notification">
         {children}
       </Text>
     </Box>
@@ -50,59 +70,42 @@ function NotifyUser({ submissionStatus, children }) {
 }
 
 export default function FormContato({ modalProps }) {
-  const [contactFromData, setContactFormData] = React.useState({
-    nome: '',
-    email: '',
-    msg: '',
-  });
-  const [isFormSubmited, setIsFormSubmited] = React.useState(false);
   const [submissionStatus, setSubmissionStatus] = React.useState(
     formState.DEFAULT
   );
+  const initialValues = {
+    name: '',
+    email: '',
+    message: '',
+  };
 
-  function handleChange(event) {
-    const fieldName = event.target.getAttribute('name');
-    setContactFormData({
-      ...contactFromData,
-      [fieldName]: event.target.value,
-    });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setSubmissionStatus(formState.LOADING);
-    setIsFormSubmited(true);
-
-    // Data Transfer Object
-    const contactDTO = {
-      name: contactFromData.nome,
-      email: contactFromData.email,
-      message: contactFromData.msg,
-    };
-
-    fetch('https://contact-form-api-jamstack.herokuapp.com/message', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(contactDTO),
-    })
-      .then((resp) => {
-        if (resp.ok) {
-          return resp.json();
-        }
-        throw new Error('Nao foi possivel enviar a mensagem');
-      })
-      .then(() => setTimeout(() => setSubmissionStatus(formState.DONE), 4000))
-      .catch(() => setSubmissionStatus(formState.ERROR));
-  }
-
-  const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  const isFormInvalid =
-    contactFromData.nome.length === 0 ||
-    contactFromData.email.length === 0 ||
-    contactFromData.msg.length === 0 ||
-    !reg.test(contactFromData.email);
+  const form = useForm({
+    initialValues,
+    onSubmit: (values) => {
+      form.setIsFormDisabled(true);
+      setSubmissionStatus(formState.LOADING);
+      contactService
+        .send({
+          name: values.name,
+          email: values.email,
+          message: values.message,
+        })
+        .then(() => {
+          setTimeout(() => setSubmissionStatus(formState.DONE), 2000);
+        })
+        .catch((err) => {
+          console.table(err);
+          setSubmissionStatus(formState.ERROR);
+        })
+        .finally(() => {
+          form.setIsFormDisabled(false);
+          form.setIsFormLoading(false);
+        });
+    },
+    async validateSchema(values) {
+      return contactSchema.validate(values, { abortEarly: false });
+    },
+  });
 
   return (
     <Box
@@ -114,35 +117,38 @@ export default function FormContato({ modalProps }) {
       {...modalProps}>
       <Box textAlign="right">{modalProps.ButtonCloseModal}</Box>
 
-      {isFormSubmited && submissionStatus === formState.LOADING && (
+      {submissionStatus === formState.LOADING && (
         <NotifyUser submissionStatus={submissionStatus}>
           Seus dados estão sendo enviados, por favor aguarde :)
         </NotifyUser>
       )}
 
-      {isFormSubmited && submissionStatus === formState.DONE && (
+      {submissionStatus === formState.DONE && (
         <NotifyUser submissionStatus={submissionStatus}>
           Obrigado por entrar em contato, em breve retorno seu contato.
         </NotifyUser>
       )}
 
-      {isFormSubmited && submissionStatus === formState.ERROR && (
+      {submissionStatus === formState.ERROR && (
         <NotifyUser submissionStatus={submissionStatus}>
           Houve um erro ao enviar seus dados, por favor tente novamente.
         </NotifyUser>
       )}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={form.handleSubmit}>
         <Box>
           <Text variant="subTitle" color="#3d3d3d" tag="h2" textAlign="center">
             ENVIE SUA MENSAGEM
           </Text>
           <TextField
             placeholder="Nome"
-            name="nome"
+            name="name"
             label="Seu Nome"
-            value={contactFromData.nome}
-            onChange={handleChange}
+            value={form.values.name}
+            onChange={form.handleChange}
+            onBlur={form.handleBlur}
+            isTouched={form.touched.name}
+            error={form.errors.name}
           />
 
           <TextField
@@ -150,17 +156,23 @@ export default function FormContato({ modalProps }) {
             name="email"
             label="Seu E-mail"
             type="email"
-            value={contactFromData.email}
-            onChange={handleChange}
+            value={form.values.email}
+            onChange={form.handleChange}
+            onBlur={form.handleBlur}
+            isTouched={form.touched.email}
+            error={form.errors.email}
           />
 
           <TextField
             placeholder="Mensagem"
-            name="msg"
+            name="message"
             label="Sua Mensagem"
-            value={contactFromData.msg}
-            onChange={handleChange}
             as="textarea"
+            value={form.values.message}
+            onChange={form.handleChange}
+            onBlur={form.handleBlur}
+            isTouched={form.touched.message}
+            error={form.errors.message}
           />
 
           <Button
@@ -168,7 +180,7 @@ export default function FormContato({ modalProps }) {
             variant="primary.main"
             width="100%"
             display="block"
-            disabled={isFormInvalid}>
+            disabled={form.isFormDisabled}>
             Enviar
           </Button>
         </Box>
