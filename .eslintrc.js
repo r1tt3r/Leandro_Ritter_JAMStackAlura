@@ -2,8 +2,10 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    'cypress/globals': true,
   },
   extends: [
+    'plugin:cypress/recommended',
     'eslint:recommended',
     'plugin:react/recommended',
     'airbnb',
@@ -24,7 +26,7 @@ module.exports = {
     'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
-
+    'jest/expect-expect': 'off',
     'react/jsx-no-duplicate-props': ['error', { ignoreCase: false }],
   },
 };

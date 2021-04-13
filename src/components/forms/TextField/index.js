@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -15,6 +16,10 @@ const Input = styled(Text)`
   border-radius: ${({ theme }) => theme.borderRadius};
 `;
 
+const Label = styled.label`
+  color: #000;
+`;
+
 Input.defaultProps = {
   tag: 'input',
   variant: 'paragraph1',
@@ -28,10 +33,16 @@ export default function TextField({
   value,
   type,
   as,
+  error,
+  isTouched,
+  ...props
 }) {
+  const hasError = Boolean(error);
+  const isFieldInvalid = hasError && isTouched;
+
   return (
     <InputWrapper>
-      <label htmlFor={name}>{label}</label>
+      <Label htmlFor={name}>{label}</Label>
       <Input
         type={type}
         placeholder={placeholder}
@@ -39,13 +50,21 @@ export default function TextField({
         onChange={onChange}
         value={value}
         as={as}
+        {...props}
       />
+      {isFieldInvalid && (
+        <Text variant="smallestException" color="red">
+          {error}
+        </Text>
+      )}
     </InputWrapper>
   );
 }
 TextField.defaultProps = {
   type: 'text',
   as: 'input',
+  error: '',
+  isTouched: false,
 };
 
 TextField.propTypes = {
@@ -56,4 +75,6 @@ TextField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
   as: PropTypes.string,
+  error: PropTypes.string,
+  isTouched: PropTypes.bool,
 };

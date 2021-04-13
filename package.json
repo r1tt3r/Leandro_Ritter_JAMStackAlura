@@ -7,12 +7,16 @@
     "start": "next start",
     "export": "next build && next export",
     "lint": "eslint --ignore-path .gitignore .",
-    "commit": "cz"
+    "commit": "cz",
+    "test:integration:open": "cypress open"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
+    "@types/jest": "^26.0.22",
+    "eslint-plugin-jest": "^24.3.3",
     "framer-motion": "^3.10.0",
     "install": "^0.13.0",
+    "jest": "^26.6.3",
     "lodash": "^4.17.21",
     "next": "latest",
     "prop-types": "^15.7.2",
@@ -23,17 +27,20 @@
     "react-scroll": "^1.8.1",
     "styled-components": "^5.0.0",
     "styled-normalize": "^8.0.7",
-    "typewriter-effect": "^2.17.0"
+    "typewriter-effect": "^2.17.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.8.0",
+    "cypress": "^6.8.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.3.1",

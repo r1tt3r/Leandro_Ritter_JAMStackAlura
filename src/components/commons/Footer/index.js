@@ -6,12 +6,13 @@ import { Box } from '../foundation/layout/Box';
 // eslint-disable-next-line import/no-cycle
 import { WebsitePageContext } from '../../wrappers/WebsitePage';
 
-const ContactButton = styled.div`
+const ContactButton = styled.button`
   position: relative;
   display: inline-block;
   padding: 10px 20px;
   text-align: center;
   text-transform: uppercase;
+  background: transparent;
   overflow: hidden;
   z-index: 1;
   cursor: pointer;
