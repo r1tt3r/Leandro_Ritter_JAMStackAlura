@@ -93,14 +93,8 @@ export default function FormContato({ modalProps }) {
         .then(() => {
           setTimeout(() => setSubmissionStatus(formState.DONE), 2000);
         })
-        .catch((err) => {
-          console.table(err);
-          setSubmissionStatus(formState.ERROR);
-        })
-        .finally(() => {
-          form.setIsFormDisabled(false);
-          form.setIsFormLoading(false);
-        });
+        .catch(() => setSubmissionStatus(formState.ERROR))
+        .finally(() => form.setIsFormDisabled(false));
     },
     async validateSchema(values) {
       return contactSchema.validate(values, { abortEarly: false });
