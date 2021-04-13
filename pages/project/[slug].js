@@ -1,4 +1,3 @@
-import db from '../../db.json';
 import { getContent } from '../../src/components/screens/HomeScreen';
 import ProjectInternalPageScreen from '../../src/components/screens/ProjectInternalPageScreen';
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
