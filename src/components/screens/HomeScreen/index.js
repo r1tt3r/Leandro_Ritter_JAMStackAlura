@@ -1,16 +1,19 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from '../../commons/Card';
 import { Box } from '../../commons/foundation/layout/Box';
 import { Grid } from '../../commons/foundation/layout/Grid';
 import { Wrapper } from '../../commons/foundation/layout/Wrapper';
 import Text from '../../commons/foundation/Text';
 import Link from '../../commons/Link';
-import db from '../../../../db.json';
 import { Button } from '../../commons/Button';
 import Capa from '../../commons/Capa';
 
-export default function HomeScreen() {
-  const projectList = db.projects;
+export { getContent } from './getContent';
+
+export default function HomeScreen({ messages }) {
+  const projectList = messages.allProjects;
 
   return (
     <>
@@ -82,3 +85,11 @@ export default function HomeScreen() {
     </>
   );
 }
+
+HomeScreen.defaultProps = {
+  messages: {},
+};
+
+HomeScreen.propTypes = {
+  messages: PropTypes.object,
+};

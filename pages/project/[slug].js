@@ -1,4 +1,5 @@
 import db from '../../db.json';
+import { getContent } from '../../src/components/screens/HomeScreen';
 import ProjectInternalPageScreen from '../../src/components/screens/ProjectInternalPageScreen';
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
@@ -10,10 +11,11 @@ export default websitePageHOC(ProjectInternalPageScreen, {
   },
 });
 
-export async function getStaticProps({ params }) {
-  const { projects } = db;
+export async function getStaticProps({ params, preview }) {
+  // const { projects } = db;
+  const messages = await getContent({ preview });
 
-  const projectData = projects.reduce((valorAcumulado, project) =>
+  const projectData = messages.allProjects.reduce((valorAcumulado, project) =>
     project.slug === params.slug ? { ...project } : valorAcumulado
   );
 
@@ -22,10 +24,11 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export async function getStaticPaths() {
-  const { projects } = db;
+export async function getStaticPaths({ preview }) {
+  // const { projects } = db;
+  const messages = await getContent({ preview });
 
-  const slugs = projects.reduce((valorAcumulado, project) => {
+  const slugs = messages.allProjects.reduce((valorAcumulado, project) => {
     const model = [{ params: { slug: project.slug } }];
     return [...valorAcumulado, ...model];
   }, []);
