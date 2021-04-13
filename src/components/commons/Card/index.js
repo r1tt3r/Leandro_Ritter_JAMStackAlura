@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
@@ -12,17 +13,19 @@ export default function Card({ project }) {
         <CardItem>
           <CardItem.Image>
             <Image
-              alt={project.title}
-              src={project.image}
+              alt={project.projectImage.alt}
+              src={project.projectImage.url}
               width="348px"
               height="245px"
             />
           </CardItem.Image>
           <CardItem.Content>
             <Text variant="title" tag="h3">
-              {project.title}
+              {project.projectTitle}
             </Text>
-            <CardItem.Description>{project.text}</CardItem.Description>
+            <CardItem.Description>
+              {project.projectDescription}
+            </CardItem.Description>
           </CardItem.Content>
         </CardItem>
       </Grid.Col>
@@ -31,7 +34,5 @@ export default function Card({ project }) {
 }
 
 Card.propTypes = {
-  project: PropTypes.objectOf(
-    PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-  ).isRequired,
+  project: PropTypes.object.isRequired,
 };
